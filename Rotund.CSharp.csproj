@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\Power_ups.cs" />
     <Compile Include="Assets\Scripts\clonePrefab.cs" />
     <Compile Include="Assets\carDrive.cs" />
+    <Compile Include="Assets\swapWithPrefab.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

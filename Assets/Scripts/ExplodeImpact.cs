@@ -7,8 +7,6 @@ public class ExplodeImpact : MonoBehaviour {
     public GameObject explosionParticles;
     public float hitAllowance;
 
-
-    private Rigidbody rb;
     private GameObject collisionParticlesStored;
     private GameObject explosionParticlesStored;
     private float hitStored;
@@ -18,7 +16,6 @@ public class ExplodeImpact : MonoBehaviour {
     void Start()
     {
 
-        rb = GetComponent<Rigidbody>();
     }
 	
 	// Update is called once per frame
