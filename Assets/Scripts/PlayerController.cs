@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
     public float jump;
     public Text countText;
 	public Text winText;
+    public GameObject jumpCollider;
 
 	private Rigidbody rb;
 	private int count;
@@ -35,15 +36,16 @@ public class PlayerController : MonoBehaviour {
 
 		rb.AddForce (movement * speed);
 
-       
+
+        jumpCollider.transform.rotation = Quaternion.identity;
     }
 
-    void OnTriggerEnter(Collider other) {
+    void OnColliderEnter(Collision other) {
       /* 
        * unused for the time being*/
        if (other.gameObject.CompareTag("Pick Up")) {
             other.gameObject.SetActive(false);
-			rb.AddForce(0, 100, 0, ForceMode.Impulse);
+			rb.AddForce(0, 50, 100, ForceMode.Impulse);
             count = count + 1;
             SetCountText();
         }
@@ -59,8 +61,7 @@ public class PlayerController : MonoBehaviour {
     {
 
 		/*This sets up the conditional of the "Ground" tag for the jump*/
-        if (other.gameObject.CompareTag("Ground"))
-        {
+       
 			/*Adds upward force in a vector 3 based on the public variable of "jump"*/
             if (Input.GetKeyDown("space"))
             {
@@ -71,10 +72,10 @@ public class PlayerController : MonoBehaviour {
             {
                 rb.AddForce(0, jump, 0, ForceMode.Impulse);
             }
-        }
+        
     }
 
-	/*Currently Unused*/
+	
        void SetCountText (){
 		countText.text = "Count: " + count.ToString ();
 		if (count >= 12) {
